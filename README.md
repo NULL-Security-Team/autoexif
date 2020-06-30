@@ -3,7 +3,7 @@ bash script to easy use exiftool
 ![Screenshot from 2020-05-17 04-24-31](https://user-images.githubusercontent.com/48811414/82135069-70e49900-97f6-11ea-9519-db8cd6054361.png)
 
 
-- git clone https://github.com/SirCryptic/autoexif
+- git clone https://github.com/NULL-Security-Team/autoexif
 - cd autoexif
 - bash autoexif.sh
 
