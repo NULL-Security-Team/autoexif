@@ -1,30 +1,118 @@
-# AutoExif
+<p align="center">
+  <a href="https://github.com/sircryptic/autoexif/stargazers"><img src="https://img.shields.io/github/stars/sircryptic/autoexif.svg" alt="GitHub Stars"></a>
+  <a href="https://github.com/sircryptic/autoexif/network"><img src="https://img.shields.io/github/forks/sircryptic/autoexif.svg" alt="GitHub Forks"></a>
+  <a href="https://github.com/sircryptic/autoexif/watchers"><img src="https://img.shields.io/github/watchers/sircryptic/autoexif.svg?style=social" alt="GitHub Watchers"></a>
+  <br>
+  <a href="https://github.com/SirCryptic/autoexif/blob/master/LICENSE"><img src="https://img.shields.io/badge/license-MIT-green.svg" alt="MIT License"></a>
+</p>
 
-Autoexif is a Bash script that provides an easy-to-use interface for the exiftool utility.
+# AutoExif CLI
 
-![image](https://user-images.githubusercontent.com/48811414/222957737-03647b0d-5628-4eb3-8ac6-e17a82fb4e49.png)
+A super user-friendly CLI tool for extracting and manipulating metadata from files and URLs.
 
-## Installation
+## 🚀 Features
 
-To install Autoexif, follow these steps:
+- Read metadata from images and videos
+- Extract metadata from local files and URLs
+- Wipe specific metadata (e.g., GPS)
+- Built-in ExifTool setup for Windows
 
-1. Clone the repository: `git clone https://github.com/SirCryptic/autoexif`
-2. Navigate to the Autoexif directory: `cd autoexif`
-3. Execute the script: `bash autoexif.sh`
+<h1 align="left">Preview</h1>
 
-## Usage
+<center>
 
-Autoexif allows you to modify metadata in image files using a simple and intuitive command-line interface. Once you've navigated to the Autoexif directory and executed the script, you'll be presented with a menu of options for modifying image metadata. Simply follow the prompts to enter the relevant metadata fields and modify them as desired.
+<details>
+  <summary>Click to expand!</summary>
 
-## Credits
+  ![autoexif-cli](https://github.com/user-attachments/assets/936b15a6-4b41-4b3c-b788-fc71069851b0)
 
-Autoexif was developed by SirCryptic and is released under the [MIT License](https://github.com/SirCryptic/autoexif/blob/master/LICENSE).
+![autoexif-cl1](https://github.com/user-attachments/assets/2458ee5c-d239-40e9-bdbb-c9b96597f5fb)
 
-## Version History
+</center>
 
-- rjw5
-- rjw4
 
-## Footnotes
+## 📦 Installation
 
-This script now installs along with the dependencies, so you can just type `autoexif` in any terminal. If you prefer, you can also install the dependencies yourself and place the script inside the folder with the images you want to modify. In this case, you can then type the image name rather than the image directory and name.
+### 1. Clone the repository
+
+```bash
+git clone https://github.com/SirCryptic/autoexif.git
+cd autoexif
+```
+
+### 2. Install Python and dependencies
+Make sure you have Python 3.11+ installed.
+```bash
+pip install -r requirements.txt
+```
+
+### 3. Install the CLI tool
+
+```bash
+python setup.py install
+```
+
+### 4. Linux users: Install ExifTool manually
+
+```bash
+sudo apt install libimage-exiftool-perl
+```
+
+## 🛠️ Usage
+Get started with:
+```bash
+autoexif help
+```
+
+## 📷 Examples
+Read metadata from an image in the current directory:
+
+```bash
+autoexif read
+```
+
+Read metadata from a specific image:
+```bash
+autoexif read sample.jpg
+```
+
+Read detailed metadata:
+```bash
+autoexif read sample.jpg --detailed
+```
+
+Read metadata from a URL:
+```bash
+autoexif read https://example.com/image.jpg
+```
+
+Wipe GPS data:
+```bash
+autoexif wipe sample.jpg --type gps
+```
+
+Extract GPS from a video:
+```bash
+autoexif gps video.mp4
+```
+
+Get thumbnail metadata:
+```bash
+autoexif thumbnail sample.jpg
+```
+
+Get expert-level metadata:
+```bash
+autoexif expert sample.jpg
+```
+# 📌 Notes
+- Windows: Installation copies exiftool.exe and exiftool_files.zip to
+C:\Users\<YourUser>\AppData\Local\autoexif\
+and extracts the required files.
+
+- Ethical Use: Only process files and URLs you are authorized to access.
+
+- Help: Run autoexif help for more details and usage options.
+
+#
+Made with ❤️ by SirCryptic
