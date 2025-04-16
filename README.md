@@ -1,6 +1,6 @@
 <p align="center">
   <a href="https://github.com/sircryptic/autoexif">
-    <img src="https://github.com/user-attachments/assets/412525fb-ff50-4261-8f8c-36aa28931253" alt="AutoExif" width="500" 
+    <img src="https://github.com/user-attachments/assets/f9d8050a-7310-4f45-a05a-c2ad4e5194f5" alt="AutoExif"
   </a>
 
 <p align="center">
