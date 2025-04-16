@@ -10,6 +10,7 @@ class ExifTool:
         self.system = sys.platform.lower()
         self.appdata_dir = Path(os.getenv("LOCALAPPDATA", os.path.expanduser("~\\AppData\\Local"))) / "autoexif" if "win" in self.system else Path.home() / ".autoexif"
         self.exiftool_path = self.setup_exiftool()
+        self.validate_environment()
 
     def setup_exiftool(self):
         """Setup ExifTool path."""
@@ -19,7 +20,6 @@ class ExifTool:
             if data_exiftool.exists() and dll_path.exists() and any(dll_path.glob("perl5*.dll")):
                 return str(data_exiftool)
             
-            # Copy from installed package
             try:
                 resource_base = getattr(sys, '_MEIPASS', Path(__file__).parent.parent)
                 exiftool_src = Path(resource_base) / "resources/exiftool.exe"
@@ -27,13 +27,11 @@ class ExifTool:
                 
                 self.appdata_dir.mkdir(exist_ok=True)
                 
-                # Copy exiftool.exe
                 if exiftool_src.exists():
                     shutil.copy(exiftool_src, data_exiftool)
                 else:
-                    raise FileNotFoundError("exiftool.exe not found in C:\\Users\\<YourUser>\\AppData\\Local\\autoexif")
+                    raise FileNotFoundError("exiftool.exe not found in src/resources/. Download from https://exiftool.org/.")
                 
-                # Copy and extract exiftool_files.zip
                 if zip_src.exists():
                     shutil.copy(zip_src, self.appdata_dir / "exiftool_files.zip")
                     try:
@@ -41,7 +39,6 @@ class ExifTool:
                             zip_ref.extractall(self.appdata_dir / "exiftool_files")
                     except zipfile.BadZipFile:
                         raise RuntimeError("exiftool_files.zip is corrupt. Replace it in src/resources/ with a valid zip from https://exiftool.org/.")
-                    # Verify extraction
                     if not dll_path.exists():
                         raise RuntimeError("Failed to create exiftool_files directory in C:\\Users\\<YourUser>\\AppData\\Local\\autoexif")
                     if not any(dll_path.glob("perl5*.dll")):
@@ -49,19 +46,30 @@ class ExifTool:
                     if not (dll_path / "lib").exists():
                         raise RuntimeError("No lib/ directory found in exiftool_files. Ensure exiftool_files.zip contains it.")
                 else:
-                    raise FileNotFoundError("exiftool_files.zip not found in package.")
+                    raise FileNotFoundError("exiftool_files.zip not found in src/resources/. Download from https://exiftool.org/.")
                 
                 if data_exiftool.exists():
                     return str(data_exiftool)
                 else:
                     raise RuntimeError("Failed to copy exiftool.exe to AppData\\Local\\autoexif")
             except Exception as e:
-                print(f"Error setting up exiftool: {e}")
-            
-            # Fallback to system exiftool
-            return "exiftool"
-        else:
-            return "exiftool"
+                raise RuntimeError(f"Error setting up ExifTool on Windows: {e}")
+        
+        else:  # Linux
+            return "exiftool"  # Rely on system exiftool, installed via setup.py
+
+    def validate_environment(self):
+        """Validate ExifTool and dependencies."""
+        try:
+            subprocess.run([self.exiftool_path, "-ver"], check=True, capture_output=True, text=True)
+        except (subprocess.CalledProcessError, FileNotFoundError):
+            raise RuntimeError("ExifTool not found. On Windows, check C:\\Users\\<YourUser>\\AppData\\Local\\autoexif\\exiftool.exe and exiftool_files\\. On Linux, ensure setup completed successfully.")
+        
+        if "linux" in self.system:
+            try:
+                subprocess.run(["perl", "-v"], check=True, capture_output=True, text=True)
+            except (subprocess.CalledProcessError, FileNotFoundError):
+                raise RuntimeError("Perl not found. Install it with: sudo apt install perl (Debian/Ubuntu), sudo dnf install perl (Fedora), or sudo pacman -S perl (Arch)")
 
     def run(self, args, input_data=None):
         """Run ExifTool with given arguments."""
@@ -89,6 +97,6 @@ class ExifTool:
             else:
                 raise RuntimeError(f"ExifTool error: {stderr.decode('utf-8', errors='ignore')}")
         except FileNotFoundError:
-            raise RuntimeError("ExifTool not found. On Windows, check C:\\Users\\<YourUser>\\AppData\\Local\\autoexif\\exiftool.exe and exiftool_files\\. On Linux, install with: sudo apt install libimage-exiftool-perl")
+            raise RuntimeError("ExifTool not found. On Windows, check C:\\Users\\<YourUser>\\AppData\\Local\\autoexif\\exiftool.exe and exiftool_files\\. On Linux, ensure setup completed successfully.")
         except Exception as e:
             raise RuntimeError(f"Failed to run ExifTool: {e}")

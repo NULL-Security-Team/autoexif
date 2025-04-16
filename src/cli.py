@@ -59,8 +59,6 @@ Tips:
   - For 'read', omit path to use an image in the current directory.
   - Path can be a local file (e.g., sample.jpg) or URL (for 'read' and 'thumbnail').
   - Use --detailed for more metadata.
-  - On Linux, install exiftool: sudo apt install libimage-exiftool-perl
-  - On Windows, ensure exiftool.exe is in C:\\Users\\<YourUser>\\AppData\\Local\\autoexif\\
 
 Ethical Use:
   Only process files or URLs you have permission to analyze.
@@ -84,7 +82,7 @@ def read(path, detailed):
                 click.echo("No image found in current directory. Try specifying a file or URL!", err=True)
                 return
             click.echo(f"Reading metadata from file: {image_path.name}...")
-            result = ops.read_metadata(str(image_path), detailed)
+            result = ops.read_metadata(str(image_path.resolve()), detailed)
         elif path.startswith("http"):
             if not validate_url(path):
                 click.echo("Oops, that URL looks invalid! Try something like https://example.com/image.jpg.", err=True)
@@ -104,7 +102,7 @@ def read(path, detailed):
         else:
             click.echo("No metadata found. Try a different file or URL!")
     except Exception as e:
-        click.echo(f"Error: {str(e)}. On Windows, check C:\\Users\\<YourUser>\\AppData\\Local\\autoexif\\exiftool.exe and exiftool_files\\. On Linux: sudo apt install libimage-exiftool-perl.", err=True)
+        click.echo(f"Error: {str(e)}", err=True)
 
 @cli.command()
 @click.argument("path")
@@ -135,7 +133,7 @@ def wipe(path, type, comment, custom_type):
         else:
             click.echo("Failed to wipe metadata. Check the file!")
     except Exception as e:
-        click.echo(f"Error: {str(e)}. On Windows, check C:\\Users\\<YourUser>\\AppData\\Local\\autoexif\\exiftool.exe and exiftool_files\\. On Linux: sudo apt install libimage-exiftool-perl.", err=True)
+        click.echo(f"Error: {str(e)}", err=True)
 
 @cli.command()
 @click.argument("path")
@@ -160,7 +158,7 @@ def gps(path):
         else:
             click.echo("No GPS data found. Try another file!")
     except Exception as e:
-        click.echo(f"Error: {str(e)}. On Windows, check C:\\Users\\<YourUser>\\AppData\\Local\\autoexif\\exiftool.exe and exiftool_files\\. On Linux: sudo apt install libimage-exiftool-perl.", err=True)
+        click.echo(f"Error: {str(e)}", err=True)
 
 @cli.command()
 @click.argument("path")
@@ -190,7 +188,7 @@ def thumbnail(path):
         else:
             click.echo("No thumbnail metadata found. Try another image!")
     except Exception as e:
-        click.echo(f"Error: {str(e)}. On Windows, check C:\\Users\\<YourUser>\\AppData\\Local\\autoexif\\exiftool.exe and exiftool_files\\. On Linux: sudo apt install libimage-exiftool-perl.", err=True)
+        click.echo(f"Error: {str(e)}", err=True)
 
 @cli.command()
 @click.argument("path")
@@ -215,7 +213,7 @@ def expert(path):
         else:
             click.echo("No metadata extracted. Try another file!")
     except Exception as e:
-        click.echo(f"Error: {str(e)}. On Windows, check C:\\Users\\<YourUser>\\AppData\\Local\\autoexif\\exiftool.exe and exiftool_files\\. On Linux: sudo apt install libimage-exiftool-perl.", err=True)
+        click.echo(f"Error: {str(e)}", err=True)
 
 if __name__ == "__main__":
     cli()

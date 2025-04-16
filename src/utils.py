@@ -2,10 +2,11 @@ import re
 from pathlib import Path
 
 def validate_path(path):
-    """Validate that a file exists."""
+    """Validate that a file exists and is accessible."""
     try:
-        return Path(path).resolve().exists()
-    except (OSError, FileNotFoundError):
+        resolved_path = Path(path).resolve()
+        return resolved_path.exists() and resolved_path.is_file()
+    except (OSError, FileNotFoundError, PermissionError):
         return False
 
 def validate_url(url):

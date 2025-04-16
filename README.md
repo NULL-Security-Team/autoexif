@@ -15,7 +15,7 @@ A super user-friendly CLI tool for extracting and manipulating metadata from fil
 - Read metadata from images and videos
 - Extract metadata from local files and URLs
 - Wipe specific metadata (e.g., GPS)
-- Built-in ExifTool setup for Windows
+- Super Easy setup for Windows & Linux Distro's
 
 <h1 align="left">Preview</h1>
 
@@ -48,15 +48,18 @@ pip install -r requirements.txt
 
 ### 3. Install the CLI tool
 
+windows
 ```bash
 python setup.py install
 ```
 
-### 4. Linux users: Install ExifTool manually
-
+linux
 ```bash
-sudo apt install libimage-exiftool-perl
+sudo python3 setup.py install
 ```
+
+- Windows: Copies exiftool.exe and exiftool_files.zip to C:\Users<YourUser>\AppData\Local\autoexif, extracting the zip.
+- Linux: Auto-installs ExifTool using your system's package manager or downloads it to ~/.autoexif/ if needed.
 
 ## 🛠️ Usage
 Get started with:
@@ -109,10 +112,11 @@ autoexif expert sample.jpg
 - Windows: Installation copies exiftool.exe and exiftool_files.zip to
 C:\Users\<YourUser>\AppData\Local\autoexif\
 and extracts the required files.
+- Linux: Auto-installs ExifTool using your system's package manager or downloads it to ~/.autoexif/ if needed.
 
 - Ethical Use: Only process files and URLs you are authorized to access.
 
-- Help: Run `autoexif help` for more details and usage options.
+- Help: Run autoexif help for more details and usage options.
 
 #
 Made with ❤️ by SirCryptic
