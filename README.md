@@ -143,7 +143,7 @@ and extracts the required files.
 
 - Ethical Use: Only process files and URLs you are authorized to access.
 
-- Help: Run autoexif help for more details and usage options.
+- Help: Run `autoexif help` for more details and usage options.
 
 #
 Made with ❤️ by SirCryptic
