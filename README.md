@@ -1,8 +1,6 @@
 <p align="center">
   <a href="https://github.com/sircryptic/autoexif">
-    <img src="https://github.com/user-attachments/assets/1c9c32ad-9ebf-4e14-a3d8-292d563a2982" alt="AutoExif" width="500" 
-    onmouseover="this.style.transform='scale(1.05)'; this.style.opacity='0.8';" 
-    onmouseout="this.style.transform='scale(1)'; this.style.opacity='1';">
+    <img src="https://github.com/user-attachments/assets/412525fb-ff50-4261-8f8c-36aa28931253" alt="AutoExif" width="500" 
   </a>
 
 <p align="center">
