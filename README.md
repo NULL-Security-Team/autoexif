@@ -1,4 +1,11 @@
 <p align="center">
+  <a href="https://github.com/sircryptic/autoexif">
+    <img src="https://github.com/user-attachments/assets/1c9c32ad-9ebf-4e14-a3d8-292d563a2982" alt="AutoExif" width="500" 
+    onmouseover="this.style.transform='scale(1.05)'; this.style.opacity='0.8';" 
+    onmouseout="this.style.transform='scale(1)'; this.style.opacity='1';">
+  </a>
+
+<p align="center">
   <a href="https://github.com/sircryptic/autoexif/stargazers"><img src="https://img.shields.io/github/stars/sircryptic/autoexif.svg" alt="GitHub Stars"></a>
   <a href="https://github.com/sircryptic/autoexif/network"><img src="https://img.shields.io/github/forks/sircryptic/autoexif.svg" alt="GitHub Forks"></a>
   <a href="https://github.com/sircryptic/autoexif/watchers"><img src="https://img.shields.io/github/watchers/sircryptic/autoexif.svg?style=social" alt="GitHub Watchers"></a>
