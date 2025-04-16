@@ -6,7 +6,7 @@
   <a href="https://github.com/SirCryptic/autoexif/blob/master/LICENSE"><img src="https://img.shields.io/badge/license-MIT-green.svg" alt="MIT License"></a>
 </p>
 
-# AutoExif CLI
+# AutoExif CLI w/TUI
 
 A super user-friendly CLI tool for extracting and manipulating metadata from files and URLs.
 
@@ -77,6 +77,16 @@ sudo python3 setup.py install
 Get started with:
 ```bash
 autoexif help
+```
+
+- Short Version Of `help`
+```bash
+autoexif --help
+```
+
+- Open TUI
+```bash
+autoexif
 ```
 
 ## 📷 Examples
