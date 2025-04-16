@@ -72,7 +72,7 @@ setup(
     name="autoexif",
     version="1.0.0",
     packages=find_packages(),
-    install_requires=["click", "requests"],
+    install_requires=["click", "requests", "prompt_toolkit"],
     package_data={
         "autoexif": [
             "src/resources/exiftool.exe",
