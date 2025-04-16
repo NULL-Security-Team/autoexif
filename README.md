@@ -25,11 +25,17 @@ A super user-friendly CLI tool for extracting and manipulating metadata from fil
   <summary>Click to expand!</summary>
 
 - Linux
-![image](https://github.com/user-attachments/assets/7e8a39e3-9ef2-44b7-b580-ee483ca3839a)
+
+![image](https://github.com/user-attachments/assets/854ed46c-a446-4c0a-9e10-abe24ee08fc1)
+
+![image](https://github.com/user-attachments/assets/f10c7b29-b82e-4134-a481-f04b3c5f2390)
 
 ![image](https://github.com/user-attachments/assets/051a4a2c-e672-4c84-933c-272d43e4dcb2)
 
 - Windows
+
+![image](https://github.com/user-attachments/assets/9d7eae94-889a-424d-b808-102f4f066ab2)
+
   ![autoexif-cli](https://github.com/user-attachments/assets/936b15a6-4b41-4b3c-b788-fc71069851b0)
 
 ![autoexif-cl1](https://github.com/user-attachments/assets/2458ee5c-d239-40e9-bdbb-c9b96597f5fb)
