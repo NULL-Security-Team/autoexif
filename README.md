@@ -22,6 +22,10 @@ A super user-friendly CLI tool for extracting and manipulating metadata from fil
 - Wipe specific metadata (e.g., GPS)
 - Super Easy setup for Windows & Linux Distro's
 
+### Q/A
+- Q: Where is the original bash version? 
+- A: [Here](https://github.com/SirCryptic/autoexif/tree/orginal---bash)
+
 <h1 align="left">Preview</h1>
 
 <center>
