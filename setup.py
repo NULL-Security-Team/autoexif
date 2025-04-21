@@ -103,7 +103,7 @@ setup(
         "install": CustomInstallCommand,
     },
     author="SirCryptic",
-    author_email="sircryptic@protonmail.com",
+    author_email="your.email@example.com",
     description="CLI tool for easy metadata extraction and manipulation",
     long_description=long_description,
     long_description_content_type="text/markdown",
@@ -114,5 +114,5 @@ setup(
         "Operating System :: Microsoft :: Windows",
         "Operating System :: POSIX :: Linux",
     ],
-    python_requires=">=3.8",
+    python_requires=">=3.11",
 )
