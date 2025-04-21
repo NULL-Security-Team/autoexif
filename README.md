@@ -51,14 +51,14 @@ A super user-friendly CLI tool for extracting and manipulating metadata from fil
 
 </center>
 
+## 📦 Installation
+
 Install via pip:
 ```
 pip install autoexif
 ```
 
-or build & install yourself from source
-
-## 📦 Installation
+or build & install yourself from source.
 
 ### 1. Clone the repository
 
