@@ -103,7 +103,7 @@ setup(
         "install": CustomInstallCommand,
     },
     author="SirCryptic",
-    author_email="your.email@example.com",
+    author_email="sircryptic@protonmail.com",
     description="CLI tool for easy metadata extraction and manipulation",
     long_description=long_description,
     long_description_content_type="text/markdown",
