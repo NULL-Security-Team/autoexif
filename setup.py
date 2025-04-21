@@ -83,7 +83,7 @@ with open("README.md", encoding="utf-8") as f:
 
 setup(
     name="autoexif",
-    version="1.0.3",  # Incremented to avoid conflicts
+    version="1.0.1",
     packages=['autoexif'] + [f'autoexif.{pkg}' for pkg in find_packages(where='src')],
     package_dir={"autoexif": "src"},
     include_package_data=True,
