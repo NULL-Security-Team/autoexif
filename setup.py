@@ -83,20 +83,24 @@ with open("README.md", encoding="utf-8") as f:
 
 setup(
     name="autoexif",
-    version="1.0.1",
-    packages=find_packages(),
+    version="1.0.3",  # Incremented to avoid conflicts
+    packages=['autoexif'] + [f'autoexif.{pkg}' for pkg in find_packages(where='src')],
+    package_dir={"autoexif": "src"},
+    include_package_data=True,
     install_requires=["click>=8.1.0", "requests>=2.28.0", "prompt_toolkit>=3.0.0"],
     package_data={
         "autoexif": [
-            "src/resources/exiftool.exe",
-            "src/resources/exiftool_files.zip",
-            "src/resources/icon.png",
-            "scripts/install_exiftool.py",
+            "resources/exiftool.exe",
+            "resources/exiftool_files.zip",
+            "resources/icon.png",
         ],
     },
+    data_files=[
+        ("scripts", ["scripts/install_exiftool.py", "scripts/init_exiftool.py"]),
+    ],
     entry_points={
         "console_scripts": [
-            "autoexif=src.cli:cli",
+            "autoexif=autoexif.cli:cli",
         ],
     },
     cmdclass={
@@ -108,9 +112,9 @@ setup(
     long_description=long_description,
     long_description_content_type="text/markdown",
     url="https://github.com/SirCryptic/autoexif",
+    license="MIT",
     classifiers=[
         "Programming Language :: Python :: 3",
-        "License :: OSI Approved :: MIT License",
         "Operating System :: Microsoft :: Windows",
         "Operating System :: POSIX :: Linux",
     ],
