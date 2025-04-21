@@ -7,16 +7,17 @@ from setuptools import setup, find_packages
 from setuptools.command.install import install
 
 class CustomInstallCommand(install):
-    """Custom install command to setup ExifTool."""
+    """Custom install command to setup ExifTool and icon."""
     def run(self):
         if "win" in sys.platform.lower():
             try:
                 appdata_dir = Path(os.getenv("LOCALAPPDATA", os.path.expanduser("~\\AppData\\Local"))) / "autoexif"
                 appdata_dir.mkdir(exist_ok=True)
                 
-                resource_base = Path(__file__).parent / "src/resources"
+                resource_base = Path(__file__).parent / "src" / "resources"
                 exiftool_src = resource_base / "exiftool.exe"
                 zip_src = resource_base / "exiftool_files.zip"
+                icon_src = resource_base / "icon.png"
                 
                 if exiftool_src.exists():
                     shutil.copy(exiftool_src, appdata_dir / "exiftool.exe")
@@ -48,6 +49,11 @@ class CustomInstallCommand(install):
                     print("Error: exiftool_files.zip not found in src/resources. Download from https://exiftool.org/.")
                     sys.exit(1)
                 
+                if icon_src.exists():
+                    shutil.copy(icon_src, appdata_dir / "icon.png")
+                else:
+                    print("Warning: icon.png not found in src/resources. Skipping icon installation.")
+                
                 if not (appdata_dir / "exiftool.exe").exists():
                     print("Error: Failed to copy exiftool.exe to C:\\Users\\<YourUser>\\AppData\\Local\\autoexif.")
                     sys.exit(1)
@@ -58,8 +64,17 @@ class CustomInstallCommand(install):
             try:
                 from scripts.install_exiftool import install_exiftool
                 install_exiftool()
+                # Copy icon to ~/.autoexif
+                resource_base = Path(__file__).parent / "src" / "resources"
+                icon_src = resource_base / "icon.png"
+                autoexif_dir = Path.home() / ".autoexif"
+                if icon_src.exists():
+                    autoexif_dir.mkdir(exist_ok=True)
+                    shutil.copy(icon_src, autoexif_dir / "icon.png")
+                else:
+                    print("Warning: icon.png not found in src/resources. Skipping icon installation.")
             except Exception as e:
-                print(f"Error installing ExifTool on Linux: {e}")
+                print(f"Error installing ExifTool or icon on Linux: {e}")
                 sys.exit(1)
         
         install.run(self)
@@ -70,14 +85,15 @@ with open("README.md", encoding="utf-8") as f:
 
 setup(
     name="autoexif",
-    version="1.0.0",
+    version="1.0.1",
     packages=find_packages(),
-    install_requires=["click", "requests", "prompt_toolkit"],
+    install_requires=["click>=8.1.0", "requests>=2.28.0", "prompt_toolkit>=3.0.0"],
     package_data={
         "autoexif": [
             "src/resources/exiftool.exe",
             "src/resources/exiftool_files.zip",
-            "scripts/install_exiftool.py"
+            "src/resources/icon.png",
+            "scripts/install_exiftool.py",
         ],
     },
     entry_points={
@@ -89,7 +105,16 @@ setup(
         "install": CustomInstallCommand,
     },
     author="SirCryptic",
+    author_email="sircryptic@protonmail.com",
     description="CLI tool for easy metadata extraction and manipulation",
     long_description=long_description,
     long_description_content_type="text/markdown",
+    url="https://github.com/SirCryptic/autoexif",
+    classifiers=[
+        "Programming Language :: Python :: 3",
+        "License :: OSI Approved :: MIT License",
+        "Operating System :: Microsoft :: Windows",
+        "Operating System :: POSIX :: Linux",
+    ],
+    python_requires=">=3.7",
 )
