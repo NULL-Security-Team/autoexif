@@ -4,6 +4,7 @@ import sys
 import shutil
 import zipfile
 from pathlib import Path
+from importlib import resources
 
 class ExifTool:
     def __init__(self):
@@ -21,16 +22,16 @@ class ExifTool:
                 return str(data_exiftool)
             
             try:
-                resource_base = getattr(sys, '_MEIPASS', Path(__file__).parent.parent)
-                exiftool_src = Path(resource_base) / "resources/exiftool.exe"
-                zip_src = Path(resource_base) / "resources/exiftool_files.zip"
+                with resources.as_file(resources.files("autoexif").joinpath("resources")) as resource_base:
+                    exiftool_src = resource_base / "exiftool.exe"
+                    zip_src = resource_base / "exiftool_files.zip"
                 
                 self.appdata_dir.mkdir(exist_ok=True)
                 
                 if exiftool_src.exists():
                     shutil.copy(exiftool_src, data_exiftool)
                 else:
-                    raise FileNotFoundError("exiftool.exe not found in src/resources/. Download from https://exiftool.org/.")
+                    raise FileNotFoundError("exiftool.exe not found in autoexif/resources/. Download from https://exiftool.org/.")
                 
                 if zip_src.exists():
                     shutil.copy(zip_src, self.appdata_dir / "exiftool_files.zip")
@@ -46,7 +47,7 @@ class ExifTool:
                     if not (dll_path / "lib").exists():
                         raise RuntimeError("No lib/ directory found in exiftool_files. Ensure exiftool_files.zip contains it.")
                 else:
-                    raise FileNotFoundError("exiftool_files.zip not found in src/resources/. Download from https://exiftool.org/.")
+                    raise FileNotFoundError("exiftool_files.zip not found in autoexif/resources/. Download from https://exiftool.org/.")
                 
                 if data_exiftool.exists():
                     return str(data_exiftool)
