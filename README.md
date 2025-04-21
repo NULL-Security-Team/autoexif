@@ -69,6 +69,13 @@ pip install -r requirements.txt
 
 ### 3. Install the CLI tool
 
+Install via pip:
+```
+pip install autoexif
+```
+
+or build & install yourself from source
+
 windows
 ```bash
 python setup.py install
