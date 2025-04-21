@@ -51,6 +51,12 @@ A super user-friendly CLI tool for extracting and manipulating metadata from fil
 
 </center>
 
+Install via pip:
+```
+pip install autoexif
+```
+
+or build & install yourself from source
 
 ## 📦 Installation
 
@@ -68,13 +74,6 @@ pip install -r requirements.txt
 ```
 
 ### 3. Install the CLI tool
-
-Install via pip:
-```
-pip install autoexif
-```
-
-or build & install yourself from source
 
 windows
 ```bash
