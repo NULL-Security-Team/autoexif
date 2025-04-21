@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-22.04
     strategy:
       matrix:
-        python-version: ["3.8", "3.11"]
+        python-version: ["3.11"]
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -66,7 +66,7 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
-          python-version: '3.8'
+          python-version: '3.11'
 
       - name: Show Python versions
         run: |
