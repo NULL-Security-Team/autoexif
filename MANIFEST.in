@@ -1,0 +1,1 @@
+include README.md include LICENSE include src/resources/exiftool.exe include src/resources/exiftool_files.zip include src/resources/icon.png include scripts/\*.py
