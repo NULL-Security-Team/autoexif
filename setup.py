@@ -37,13 +37,13 @@ class CustomInstallCommand(install):
                         print("Error: exiftool_files.zip is corrupt. Replace with a valid zip from https://exiftool.org/.")
                         sys.exit(1)
                     if not dll_path.exists():
-                        print("Error: Failed to create exiftool_files directory in C:\\Users\\<YourUser>\\AppData\\Local\\autoexif.")
+                        print("Error: Failed to create exiftool_files directory.")
                         sys.exit(1)
                     if not any(dll_path.glob("perl5*.dll")):
-                        print("Error: exiftool_files.zip does not contain Perl DLLs. Download a valid zip from https://exiftool.org/.")
+                        print("Error: exiftool_files.zip does not contain Perl DLLs. Download from https://exiftool.org/.")
                         sys.exit(1)
                     if not (dll_path / "lib").exists():
-                        print("Error: exiftool_files.zip does not contain lib/ directory. Download a valid zip from https://exiftool.org/.")
+                        print("Error: exiftool_files.zip does not contain lib/ directory. Download from https://exiftool.org/.")
                         sys.exit(1)
                 else:
                     print("Error: exiftool_files.zip not found in src/resources. Download from https://exiftool.org/.")
@@ -55,7 +55,7 @@ class CustomInstallCommand(install):
                     print("Warning: icon.png not found in src/resources. Skipping icon installation.")
                 
                 if not (appdata_dir / "exiftool.exe").exists():
-                    print("Error: Failed to copy exiftool.exe to C:\\Users\\<YourUser>\\AppData\\Local\\autoexif.")
+                    print("Error: Failed to copy exiftool.exe.")
                     sys.exit(1)
             except Exception as e:
                 print(f"Error copying ExifTool files: {e}")
@@ -64,7 +64,6 @@ class CustomInstallCommand(install):
             try:
                 from scripts.install_exiftool import install_exiftool
                 install_exiftool()
-                # Copy icon to ~/.autoexif
                 resource_base = Path(__file__).parent / "src" / "resources"
                 icon_src = resource_base / "icon.png"
                 autoexif_dir = Path.home() / ".autoexif"
@@ -79,7 +78,6 @@ class CustomInstallCommand(install):
         
         install.run(self)
 
-# Read README.md with UTF-8 encoding
 with open("README.md", encoding="utf-8") as f:
     long_description = f.read()
 
@@ -116,5 +114,5 @@ setup(
         "Operating System :: Microsoft :: Windows",
         "Operating System :: POSIX :: Linux",
     ],
-    python_requires=">=3.7",
+    python_requires=">=3.8",
 )
