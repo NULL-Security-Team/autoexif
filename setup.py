@@ -118,5 +118,5 @@ setup(
         "Operating System :: Microsoft :: Windows",
         "Operating System :: POSIX :: Linux",
     ],
-    python_requires=">=3.8",
+    python_requires=">=3.11",
 )
