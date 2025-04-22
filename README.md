@@ -26,6 +26,8 @@ A super user-friendly CLI tool for extracting and manipulating metadata from fil
 - Q: Where is the original bash version? 
 - A: [Here](https://github.com/SirCryptic/autoexif/tree/orginal---bash)
 
+#
+
 - Q: Where is the standalone .exe? 
 - A: Check Releases [Here](https://github.com/SirCryptic/autoexif/releases/tag/v1.0.2)
 <h1 align="left">Preview</h1>
