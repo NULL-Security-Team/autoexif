@@ -8,6 +8,7 @@
   <a href="https://github.com/sircryptic/autoexif/network"><img src="https://img.shields.io/github/forks/sircryptic/autoexif.svg" alt="GitHub Forks"></a>
   <a href="https://github.com/sircryptic/autoexif/watchers"><img src="https://img.shields.io/github/watchers/sircryptic/autoexif.svg?style=social" alt="GitHub Watchers"></a>
   <br>
+  <a href="https://pepy.tech/projects/autoexif"><img src="https://static.pepy.tech/badge/autoexif" alt="PyPI Downloads"></a>
   <a href="https://github.com/SirCryptic/autoexif/blob/master/LICENSE"><img src="https://img.shields.io/badge/license-MIT-green.svg" alt="MIT License"></a>
 </p>
 
